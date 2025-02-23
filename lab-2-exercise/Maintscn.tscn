@@ -1,0 +1,62 @@
+[gd_scene load_steps=7 format=3 uid="uid://2kdfmyik2gq5"]
+
+[ext_resource type="Script" path="res://car.gd" id="1_fbrwd"]
+[ext_resource type="PackedScene" uid="uid://bfrtkhuoi5ker" path="res://color_rect.tscn" id="1_xkhmj"]
+[ext_resource type="Texture2D" uid="uid://dum8nmfl0mg7k" path="res://VW Sagitar.png" id="2_tbp7p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n3e64"]
+size = Vector2(1654.5, 42)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3wu36"]
+size = Vector2(36, 1136)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_35cqq"]
+size = Vector2(241, 70.3125)
+
+[node name="Node" type="Node"]
+
+[node name="ColorRect" parent="." instance=ExtResource("1_xkhmj")]
+offset_left = -378.0
+offset_top = 0.0
+offset_right = 1445.0
+offset_bottom = 1083.0
+color = Color(0.627451, 0.627451, 0.627451, 1)
+
+[node name="Arena" type="StaticBody2D" parent="ColorRect"]
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="ColorRect/Arena"]
+position = Vector2(893.75, -7)
+shape = SubResource("RectangleShape2D_n3e64")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="ColorRect/Arena"]
+position = Vector2(888, 1075)
+shape = SubResource("RectangleShape2D_n3e64")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="ColorRect/Arena"]
+position = Vector2(1677, 530)
+shape = SubResource("RectangleShape2D_3wu36")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ColorRect/Arena"]
+position = Vector2(85, 541)
+shape = SubResource("RectangleShape2D_3wu36")
+
+[node name="Car" type="CharacterBody2D" parent="."]
+position = Vector2(718, 413)
+script = ExtResource("1_fbrwd")
+
+[node name="VwSagitar" type="Sprite2D" parent="Car"]
+position = Vector2(-1, -39)
+scale = Vector2(0.134283, 0.134283)
+texture = ExtResource("2_tbp7p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Car"]
+position = Vector2(-2.5, -39.8438)
+shape = SubResource("RectangleShape2D_35cqq")
+
+[node name="Camera2D" type="Camera2D" parent="Car"]
+zoom = Vector2(2, 2)
+limit_left = 0
+limit_top = 0
+limit_right = 1366
+limit_bottom = 768
+limit_smoothed = true
